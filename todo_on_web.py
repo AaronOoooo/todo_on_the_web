@@ -1,5 +1,4 @@
 #Aaron's personal todo list
-#Aaron's Get-To-It List
 from flask import Flask, jsonify, request, render_template
 import json
 from datetime import datetime
