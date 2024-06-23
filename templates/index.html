@@ -44,7 +44,8 @@
                         const formattedDate = formatDate(task.due_date);
                         $('#task-list').append(`
                             <li>
-                                <span>${task.name} - ${formattedDate}</span>
+                                <span class="due-date">${formattedDate}</span>
+                                <span class="task-name">${task.name}</span>
                                 <button onclick="deleteTask(${index})">Delete</button>
                             </li>
                         `);

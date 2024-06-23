@@ -36,6 +36,9 @@ def get_tasks():
             task['due_date'] = today.strftime('%Y-%m-%d')
         updated_tasks.append(task)
 
+    # Sort tasks by due date and then by name
+    updated_tasks.sort(key=lambda x: (x['due_date'], x['name']))
+
     save_tasks(updated_tasks)
     return jsonify(updated_tasks)
 
