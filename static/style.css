@@ -6,34 +6,52 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #f4f4f4;
+    background: linear-gradient(to right, #1e3c72, #2a5298, #6a82fb, #fc5c7d);
+    color: #333;
 }
 
 #app {
-    background: white;
+    background: rgba(255, 255, 255, 0.95);
     padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 500px;
 }
 
 h1 {
     margin-top: 0;
+    font-size: 24px;
+    color: #1e3c72;
+    text-align: center;
 }
 
 form {
     display: flex;
+    flex-direction: column;
     margin-bottom: 20px;
 }
 
 input[type="text"], input[type="date"] {
-    margin-right: 10px;
-    padding: 5px;
-    font-size: 1em;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 button {
-    padding: 5px 10px;
-    font-size: 1em;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #1e3c72;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2a5298;
 }
 
 ul {
@@ -44,19 +62,27 @@ ul {
 li {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 10px;
-    padding: 5px;
-    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #2a5298;
+    color: white;
 }
 
-button {
-    background: #d9534f;
+li span {
+    font-size: 16px;
+}
+
+li button {
+    background-color: #fc5c7d;
     color: white;
     border: none;
-    border-radius: 3px;
+    padding: 5px 10px;
+    border-radius: 5px;
     cursor: pointer;
 }
 
-button:hover {
-    background: #c9302c;
+li button:hover {
+    background-color: #ff6b81;
 }
