@@ -1,4 +1,3 @@
-<!-- templates/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,6 +39,9 @@
                     type: 'DELETE',
                     success: function () {
                         fetchTasks();
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Failed to delete task:', error);
                     }
                 });
             }
@@ -56,6 +58,9 @@
             });
 
             fetchTasks();
+
+            // Expose deleteTask function to the global scope
+            window.deleteTask = deleteTask;
         });
     </script>
 </body>
