@@ -80,8 +80,8 @@ li span.task-name {
     flex-grow: 1;
 }
 
-li button {
-    background-color: #fc5c7d;
+li button.delete-button {
+    background-color: #ff4c4c;
     color: white;
     border: none;
     padding: 5px 10px;
@@ -89,6 +89,20 @@ li button {
     cursor: pointer;
 }
 
-li button:hover {
-    background-color: #ff6b81;
+li button.delete-button:hover {
+    background-color: #ff6b6b;
+}
+
+li button.edit-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+li button.edit-button:hover {
+    background-color: #66bb6a;
 }
