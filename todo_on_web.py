@@ -62,5 +62,17 @@ def delete_task(task_index):
         return '', 204
     return '', 404
 
+@app.route('/tasks/<int:task_index>', methods=['PUT'])
+def edit_task(task_index):
+    tasks = load_tasks()
+    if 0 <= task_index < len(tasks):
+        tasks[task_index] = {
+            'name': request.form['name'],
+            'due_date': request.form['due_date']
+        }
+        save_tasks(tasks)
+        return '', 204
+    return '', 404
+
 if __name__ == '__main__':
     app.run(host='192.168.50.214', port=9000, debug=True)

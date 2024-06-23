@@ -46,7 +46,8 @@
                             <li>
                                 <span class="due-date">${formattedDate}</span>
                                 <span class="task-name">${task.name}</span>
-                                <button onclick="deleteTask(${index})">Delete</button>
+                                <button class="edit-button" onclick="editTask(${index}, '${task.name}', '${task.due_date}')">Edit</button>
+                                <button class="delete-button" onclick="deleteTask(${index})">Delete</button>
                             </li>
                         `);
                     });
@@ -66,6 +67,24 @@
                 });
             }
 
+            function editTask(index, name, dueDate) {
+                const newTaskName = prompt("Edit task name:", name);
+                const newDueDate = prompt("Edit due date (YYYY-MM-DD):", dueDate);
+                if (newTaskName !== null && newDueDate !== null) {
+                    $.ajax({
+                        url: '/tasks/' + index,
+                        type: 'PUT',
+                        data: { name: newTaskName, due_date: newDueDate },
+                        success: function () {
+                            fetchTasks();
+                        },
+                        error: function (xhr, status, error) {
+                            console.error('Failed to edit task:', error);
+                        }
+                    });
+                }
+            }
+
             $('#task-form').submit(function (event) {
                 event.preventDefault();
                 const taskName = $('#task-input').val();
@@ -79,8 +98,9 @@
 
             fetchTasks();
 
-            // Expose deleteTask function to the global scope
+            // Expose deleteTask and editTask functions to the global scope
             window.deleteTask = deleteTask;
+            window.editTask = editTask;
         });
     </script>
 </body>
