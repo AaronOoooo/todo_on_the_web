@@ -19,13 +19,32 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {
+            function formatDate(dueDate) {
+                const today = new Date();
+                const date = new Date(dueDate);
+                const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+                const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+                const diffTime = date - today;
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+                if (diffDays <= 7 && diffDays >= 0) {
+                    return dayNames[date.getDay()];
+                } else if (date.getFullYear() === today.getFullYear()) {
+                    return `${dayNames[date.getDay()]}, ${monthNames[date.getMonth()]} ${date.getDate()}`;
+                } else {
+                    return `${dayNames[date.getDay()]}, ${monthNames[date.getMonth()]} ${date.getDate()} ${date.getFullYear()}`;
+                }
+            }
+
             function fetchTasks() {
                 $.getJSON('/tasks', function (data) {
                     $('#task-list').empty();
                     data.forEach(function (task, index) {
+                        const formattedDate = formatDate(task.due_date);
                         $('#task-list').append(`
                             <li>
-                                <span>${task.name} - ${task.due_date}</span>
+                                <span>${task.name} - ${formattedDate}</span>
                                 <button onclick="deleteTask(${index})">Delete</button>
                             </li>
                         `);
